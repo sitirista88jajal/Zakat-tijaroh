@@ -1,0 +1,457 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Zakat Mal & Perdagangan 2026</title>
+    <!-- Tailwind CSS untuk Desain Premium -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons untuk Ikon Elegan -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Style cetak khusus agar laporan bersih saat diekspor ke PDF/Printer */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-card {
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+                background: white !important;
+                color: black !important;
+            }
+            .print-text-dark {
+                color: #000000 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navigasi Utama -->
+    <header class="bg-emerald-600 text-white shadow-md sticky top-0 z-50 no-print">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/10 p-2 rounded-xl">
+                    <i data-lucide="calculator" class="w-6 h-6 text-emerald-100"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight flex items-center gap-2">
+                        Kalkulator Zakat Mal & Perdagangan
+                    </h1>
+                    <p class="text-[10px] text-emerald-100/80">Otomatisasi Hitung Sesuai Syariat Fiqih</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="bg-emerald-700/50 text-emerald-100 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/30">
+                    Tahun 2026
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-6">
+        
+        <!-- Info Alert Box (Referensi Hukum Fiqih) -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 mb-6 no-print">
+            <div class="flex items-start gap-3">
+                <i data-lucide="book-open" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <div class="text-sm text-emerald-800 leading-relaxed space-y-2">
+                    <p class="font-bold text-emerald-950 text-base">Rujukan Syariat Zakat Perdagangan (زكاة عروض التجارة):</p>
+                    <ul class="list-disc list-inside space-y-1 text-emerald-900 text-xs md:text-sm">
+                        <li><strong>Esensi:</strong> Mengelola aset dagang dengan tujuan mendapatkan keuntungan (*li gharadhir ribh*).</li>
+                        <li><strong>Penilaian Akhir Haul:</strong> Nilai barang dagangan dinilai berdasarkan harga pasar riil saat ini di akhir tahun (akhir haul), bukan berdasarkan harga modal awal pembelian.</li>
+                        <li><strong>Kadar Zakat:</strong> Seperempat dari sepuluh persen (<span class="font-bold text-emerald-950">Rub'ul 'Usyr</span>) atau setara <span class="font-bold text-emerald-950">2,5%</span>.</li>
+                        <li><strong>Nishob:</strong> Setara dengan nilai nishob emas murni (<span class="font-bold text-emerald-950">85 Gram Emas</span>) atau perak.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Input & Hasil Perhitungan -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Kolom Kiri: Input Nominal Aset (7 Kolom di Desktop) -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <!-- Card Pengaturan Nishob -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-bold text-slate-900 flex items-center gap-2 text-sm uppercase tracking-wide">
+                            <i data-lucide="coins" class="w-5 h-5 text-amber-500"></i>
+                            Batas Nishob (85 Gram Emas)
+                        </h2>
+                        <span class="text-xs text-slate-400 font-medium">Bisa Disesuaikan</span>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 mb-1.5" for="input-nishob">
+                            NISHOB EMAS 85 GRAM (Rp)
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-bold">Rp</span>
+                            <input 
+                                type="text" 
+                                id="input-nishob" 
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-11 pr-4 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all text-right text-lg"
+                                placeholder="90.000.000"
+                            >
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2">Diset default Rp 90.000.000,00 sesuai data tabel Anda.</p>
+                    </div>
+                </div>
+
+                <!-- Card Form Input Aset -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+                        <h2 class="font-bold text-slate-900 flex items-center gap-2 text-sm uppercase tracking-wide">
+                            <i data-lucide="package" class="w-5 h-5 text-emerald-600"></i>
+                            Rincian Gudang & Saldo Aset (Akhir Haul)
+                        </h2>
+                        <button onclick="resetInputs()" class="text-xs text-rose-500 hover:text-rose-600 font-semibold flex items-center gap-1 transition-colors no-print">
+                            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Bersihkan Semua
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Input 1 -->
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <label class="text-xs font-bold text-slate-700 tracking-wide uppercase" for="val-heha">SO. STOK HEHA STORE</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Sesuai Nilai Jual Pasar Saat Ini</span>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold">Rp</span>
+                                <input type="text" id="val-heha" class="asset-input w-full border border-slate-200 rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-right bg-slate-50/50 focus:bg-white transition-all" placeholder="0">
+                            </div>
+                        </div>
+
+                        <!-- Input 2 -->
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <label class="block text-xs font-bold text-slate-700 tracking-wide uppercase" for="val-rk">SO. STOK RK UNK</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Sesuai Nilai Jual Pasar Saat Ini</span>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold">Rp</span>
+                                <input type="text" id="val-rk" class="asset-input w-full border border-slate-200 rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-right bg-slate-50/50 focus:bg-white transition-all" placeholder="0">
+                            </div>
+                        </div>
+
+                        <!-- Input 3 -->
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <label class="block text-xs font-bold text-slate-700 tracking-wide uppercase" for="val-grosir">SO. STOK GROSIR</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Sesuai Nilai Jual Pasar Saat Ini</span>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold">Rp</span>
+                                <input type="text" id="val-grosir" class="asset-input w-full border border-slate-200 rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-right bg-slate-50/50 focus:bg-white transition-all" placeholder="0">
+                            </div>
+                        </div>
+
+                        <!-- Input 4 -->
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <label class="text-xs font-bold text-slate-700 tracking-wide uppercase" for="val-piutang">PIUTANG LANCAR</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Piutang aktif yang berpotensi cair</span>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold">Rp</span>
+                                <input type="text" id="val-piutang" class="asset-input w-full border border-slate-200 rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-right bg-slate-50/50 focus:bg-white transition-all" placeholder="0">
+                            </div>
+                        </div>
+
+                        <!-- Input 5 -->
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <label class="text-xs font-bold text-slate-700 tracking-wide uppercase" for="val-lm">LM / BUKAN PERHIASAN</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Emas murni / Logam Mulia investasi</span>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold">Rp</span>
+                                <input type="text" id="val-lm" class="asset-input w-full border border-slate-200 rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-right bg-slate-50/50 focus:bg-white transition-all" placeholder="0">
+                            </div>
+                        </div>
+
+                        <!-- Input 6 -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 tracking-wide uppercase mb-1.5" for="val-bank">TOTAL SALDO BANK</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold">Rp</span>
+                                <input type="text" id="val-bank" class="asset-input w-full border border-slate-200 rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-right bg-slate-50/50 focus:bg-white transition-all" placeholder="0">
+                            </div>
+                        </div>
+
+                        <!-- Input 7 -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 tracking-wide uppercase mb-1.5" for="val-cash">TOTAL CASH (UANG TUNAI)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold">Rp</span>
+                                <input type="text" id="val-cash" class="asset-input w-full border border-slate-200 rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 text-right bg-slate-50/50 focus:bg-white transition-all" placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Hasil Kalkulasi & Aksi Laporan (5 Kolom di Desktop) -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Card Hasil / Ringkasan Utama -->
+                <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-lg relative overflow-hidden print-card">
+                    <!-- Ornamen background lembut -->
+                    <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                    
+                    <h2 class="text-xs font-bold tracking-wider text-slate-400 uppercase mb-4">Ringkasan Kewajiban</h2>
+                    
+                    <!-- Nilai Grand Total -->
+                    <div class="mb-4">
+                        <span class="text-xs text-slate-400 block font-medium">GRAND TOTAL ASET</span>
+                        <div id="display-grand-total" class="text-2xl font-extrabold text-white mt-1 print-text-dark">Rp 0</div>
+                    </div>
+
+                    <!-- Indikator Pencapaian Nishob -->
+                    <div class="mb-6">
+                        <div id="badge-status" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold">
+                            <!-- Diisi dinamis oleh JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Garis batas tipis -->
+                    <div class="border-t border-slate-800 my-4"></div>
+
+                    <!-- Nilai Zakat yang wajib dibayarkan -->
+                    <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/40 print-card">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="text-xs text-slate-300 font-bold tracking-wide">ZAKAT WAJIB (2,5%)</span>
+                            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">2.5%</span>
+                        </div>
+                        <div id="display-zakat" class="text-3xl font-black text-emerald-400 tracking-tight print-text-dark">Rp 0</div>
+                    </div>
+
+                    <p id="zakat-note" class="text-[11px] text-slate-400 mt-4 italic text-center leading-relaxed">
+                        Silakan masukkan nominal aset terlebih dahulu untuk memulai perhitungan.
+                    </p>
+                </div>
+
+                <!-- Card Tindakan Laporan -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 no-print">
+                    <h3 class="font-bold text-slate-900 text-xs uppercase tracking-wide mb-3 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4 text-slate-500"></i>
+                        Aksi & Laporan
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="copyToClipboard()" class="flex items-center justify-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-3 px-4 rounded-xl transition-all">
+                            <i data-lucide="copy" class="w-4 h-4"></i> Salin Teks
+                        </button>
+                        <button onclick="window.print()" class="flex items-center justify-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold py-3 px-4 rounded-xl transition-all">
+                            <i data-lucide="printer" class="w-4 h-4"></i> Cetak PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Referensi Tambahan -->
+                <div class="bg-slate-100 rounded-2xl p-4 text-center no-print">
+                    <span class="text-xs text-slate-500 block mb-1">Butuh menyalurkan zakat secara resmi?</span>
+                    <a href="https://baznas.go.id" target="_blank" class="text-xs text-emerald-600 hover:text-emerald-700 font-bold inline-flex items-center gap-1 transition-colors">
+                        Kunjungi BAZNAS RI <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifikasi Pop-up (Toast) -->
+        <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl text-sm font-semibold opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2 z-50">
+            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+            <span id="toast-msg">Berhasil disalin!</span>
+        </div>
+    </main>
+
+    <!-- Footer Aplikasi -->
+    <footer class="bg-slate-950 text-slate-400 py-6 mt-12 border-t border-slate-900 text-center text-xs no-print">
+        <p class="mb-1">&copy; 2026 Aplikasi Kalkulator Zakat Mal & Perdagangan Digital.</p>
+        <p class="text-slate-600">Diselaraskan berdasarkan tuntunan Kitab Fiqih Zakat Perdagangan.</p>
+    </footer>
+
+    <script>
+        // Inisialisasi library ikon Lucide
+        lucide.createIcons();
+
+        // Mengambil elemen-elemen DOM yang dibutuhkan
+        const inputNishob = document.getElementById('input-nishob');
+        const assetInputs = document.querySelectorAll('.asset-input');
+        const displayGrandTotal = document.getElementById('display-grand-total');
+        const displayZakat = document.getElementById('display-zakat');
+        const badgeStatus = document.getElementById('badge-status');
+        const zakatNote = document.getElementById('zakat-note');
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-msg');
+
+        // Nilai default untuk batas Nishob (Sesuai dengan gambar tabel Rp 90.000.000,00)
+        let nishobValue = 90000000;
+        inputNishob.value = formatRupiahText(nishobValue);
+
+        // Event listener saat input nishob diubah
+        inputNishob.addEventListener('input', function() {
+            let cleanVal = cleanNumber(this.value);
+            nishobValue = cleanVal;
+            this.value = formatRupiahText(cleanVal);
+            calculateZakat();
+        });
+
+        // Event listener untuk setiap field input aset agar otomatis menghitung & memformat angka
+        assetInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                let cleanVal = cleanNumber(this.value);
+                this.value = formatRupiahText(cleanVal);
+                calculateZakat();
+            });
+        });
+
+        // Fungsi membersihkan format rupiah (titik/huruf) menjadi angka murni
+        function cleanNumber(str) {
+            if (!str) return 0;
+            return parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
+        }
+
+        // Fungsi memformat angka ke representasi teks ribuan dengan titik
+        function formatRupiahText(num) {
+            if (num === 0) return '';
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // Fungsi memformat angka ke dalam teks ber-label mata uang Rp
+        function formatRupiah(num) {
+            return 'Rp ' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // Logika utama kalkulator zakat mal & perdagangan
+        function calculateZakat() {
+            let grandTotal = 0;
+
+            // Mengakumulasi seluruh input aset yang diisi oleh user
+            assetInputs.forEach(input => {
+                grandTotal += cleanNumber(input.value);
+            });
+
+            // Update tampilan Grand Total
+            displayGrandTotal.innerText = formatRupiah(grandTotal);
+
+            // Cek kondisi apakah Grand Total sudah mencapai batas Nishob
+            if (grandTotal >= nishobValue && grandTotal > 0) {
+                // Menghitung Zakat Wajib (2.5%)
+                let zakatWajib = Math.round(grandTotal * 0.025);
+                displayZakat.innerText = formatRupiah(zakatWajib);
+                
+                // Set indikator badge: Sudah Wajib Zakat
+                badgeStatus.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i> Sudah Mencapai Nishob`;
+                badgeStatus.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/20 text-emerald-300";
+                
+                zakatNote.innerText = "Aset Anda sudah melebihi batas nishob. Sesuai tuntunan Syariat, Anda wajib menunaikan zakat sebesar 2.5% (Rub'ul 'Usyr).";
+                zakatNote.className = "text-[11px] text-emerald-400 mt-4 font-semibold text-center leading-relaxed";
+            } else {
+                displayZakat.innerText = 'Rp 0';
+                
+                // Menentukan pesan status apabila di bawah batas nishob
+                if (grandTotal > 0) {
+                    badgeStatus.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4"></i> Belum Mencapai Nishob`;
+                    badgeStatus.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/20 text-amber-300";
+                    zakatNote.innerText = "Akumulasi aset Anda saat ini belum wajib zakat karena belum menyentuh batas minimum nishob emas.";
+                } else {
+                    badgeStatus.innerHTML = `<i data-lucide="help-circle" class="w-4 h-4"></i> Masukkan Harta`;
+                    badgeStatus.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-400";
+                    zakatNote.innerText = "Silakan masukkan nominal aset terlebih dahulu untuk memulai perhitungan.";
+                }
+                zakatNote.className = "text-[11px] text-slate-400 mt-4 italic text-center leading-relaxed";
+            }
+            
+            // Re-render icon dari library Lucide
+            lucide.createIcons();
+        }
+
+        // Fungsi mengosongkan semua isian form aset
+        function resetInputs() {
+            assetInputs.forEach(input => {
+                input.value = '';
+            });
+            calculateZakat();
+            showToast("Form aset berhasil dikosongkan!");
+        }
+
+        // Menyalin hasil perhitungan zakat ke clipboard
+        function copyToClipboard() {
+            let heha = document.getElementById('val-heha').value || '0';
+            let rk = document.getElementById('val-rk').value || '0';
+            let grosir = document.getElementById('val-grosir').value || '0';
+            let piutang = document.getElementById('val-piutang').value || '0';
+            let lm = document.getElementById('val-lm').value || '0';
+            let bank = document.getElementById('val-bank').value || '0';
+            let cash = document.getElementById('val-cash').value || '0';
+            
+            let grandTotal = displayGrandTotal.innerText;
+            let zakatVal = displayZakat.innerText;
+            let statusNishob = (cleanNumber(grandTotal) >= nishobValue) ? "Wajib Zakat (Mencapai Nishob)" : "Belum Wajib Zakat (Belum Mencapai Nishob)";
+
+            let teksLaporan = `LAPORAN PERHITUNGAN ZAKAT MAL & PERDAGANGAN
+-----------------------------------------
+Nishob (85g Emas) : Rp ${formatRupiahText(nishobValue)}
+
+RINCIAN ASET AKHIR HAUL (Harga Pasar):
+1. SO. STOK HEHA STORE   : Rp ${heha}
+2. SO. STOK RK UNK       : Rp ${rk}
+3. SO. STOK GROSIR       : Rp ${grosir}
+4. PIUTANG LANCAR        : Rp ${piutang}
+5. LM / BUKAN PERHIASAN  : Rp ${lm}
+6. TOTAL SALDO BANK      : Rp ${bank}
+7. TOTAL CASH            : Rp ${cash}
+
+-----------------------------------------
+GRAND TOTAL ASET         : ${grandTotal}
+STATUS KEWAJIBAN         : ${statusNishob}
+ZAKAT MAL WAJIB (2.5%)   : ${zakatVal}
+-----------------------------------------
+Waktu Perhitungan        : ${new Date().toLocaleString('id-ID')}
+Rujukan Hukum            : Fiqih Zakat Mal & Perdagangan`;
+
+            // Menyalin teks menggunakan elemen pembantu textarea
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = teksLaporan;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            showToast("Laporan berhasil disalin ke clipboard!");
+        }
+
+        // Fungsi memperlihatkan notifikasi Pop-up (toast)
+        function showToast(message) {
+            toastMsg.innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Eksekusi kalkulasi dasar saat halaman selesai dimuat pertama kali
+        window.onload = function() {
+            calculateZakat();
+        };
+    </script>
+</body>
+</html>
+
+```
